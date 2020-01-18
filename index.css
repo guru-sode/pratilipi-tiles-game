@@ -1,0 +1,12 @@
+.game-container{
+    background-color: aqua;
+}
+
+.game-title{
+    background-color: darkgoldenrod;
+    color: white;
+}
+
+.difficulty-level{
+    border-bottom: 20px;
+}
