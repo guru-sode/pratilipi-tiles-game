@@ -28,56 +28,13 @@ function selectDifficultyLevel(numberOfTiles){
 }
 
 function getThreeTiles(customTiles){
-        var template = `<div class="row">
-        <div class="col-sm-4 jumbotron jumbotron-fluid m-2">
+    var template = ''
+    for(var i=0; i < customTiles*customTiles; i++){
+        template = template + `<div class="col-sm border border-secondary p-2 bg-light">
             <div class="container">
-                <h1 class="display-4">${1}</h1>
+                <h1 class="display-4">${ i+1 === (customTiles*customTiles) ? '': i+1}</h1>
               </div>
-        </div>
-        <div class="col-sm-4 jumbotron jumbotron-fluid m-2">
-        <div class="container">
-            <h1 class="display-4">${2}</h1>
-          </div>
-    </div>
-    <div class="col-sm-4 jumbotron jumbotron-fluid m-2">
-    <div class="container">
-        <h1 class="display-4">${3}</h1>
-      </div>
-</div>
-    </div>
-    <div class="row">
-        <div class="col-sm-4 jumbotron jumbotron-fluid m-2">
-            <div class="container">
-                <h1 class="display-4">${1}</h1>
-              </div>
-        </div>
-        <div class="col-sm-4 jumbotron jumbotron-fluid m-2">
-        <div class="container">
-            <h1 class="display-4">${2}</h1>
-          </div>
-    </div>
-    <div class="col-sm-4 jumbotron jumbotron-fluid m-2">
-    <div class="container">
-        <h1 class="display-4">${3}</h1>
-      </div>
-</div>
-    </div>
-    <div class="row">
-        <div class="col-sm-4 jumbotron jumbotron-fluid m-2">
-            <div class="container">
-                <h1 class="display-4">${1}</h1>
-              </div>
-        </div>
-        <div class="col-sm-4 jumbotron jumbotron-fluid m-2">
-        <div class="container">
-            <h1 class="display-4">${2}</h1>
-          </div>
-    </div>
-    <div class="col-sm-4 jumbotron jumbotron-fluid m-2">
-    <div class="container">
-        <h1 class="display-4">${3}</h1>
-      </div>
-</div>
-    </div>`
+        </div>`
+    }
     render(template, document.querySelector('#tile-box'));
 }

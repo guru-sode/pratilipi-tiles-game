@@ -1,42 +1,43 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="index.css">
   <script src="index.js"></script>
 </head>
+
 <body>
 
-    <div class="jumbotron text-center game-title">
-        <h1>Pratilipi Number Tile Game</h1>
-        <p>Front-end developer hiring challenge</p>
-      </div>
-      
-      <div class="container-xl game-container">
-        <div class="row">
-          <div class="col-sm-4 game-info">
-            <h3>Column 1</h3>
-            <p>Lorem ipsum dolor..</p>
-          </div>
-          <div class="col-sm-4">
-            <div class="container-xl" id="tile-box">
-                <script>getTiles(3);</script>
-            </div>
-          </div>
-          <div class="col-sm-4 your-moves">
-            <h3>Column 3</h3>
-            <p>Lorem ipsum dolor..</p>
-          </div>
-        </div>
-      </div>
+  <div class="jumbotron text-center game-title">
+    <h1>Pratilipi Number Tile Game</h1>
+    <p>Front-end developer hiring challenge</p>
+  </div>
 
-      <div class="container-xl difficulty-level">
-        <button type="button" class="btn btn-primary" id="easy" onClick="selectDifficultyLevel(3)">Easy</button>
-        <button type="button" class="btn btn-primary" id="medium" onClick="selectDifficultyLevel(4)">Medium</button>
-        <button type="button" class="btn btn-primary" id="difficult" onClick="selectDifficultyLevel(10)">Difficult</button>
-        <button type="button" class="btn btn-primary" id="custom" onClick="selectDifficultyLevel(3)">Custom</button>
+  <div class="container-xl game-container">
+      <div class="col-sm-4 game-info">
+        <h3>Column 1</h3>
+        <p>Lorem ipsum dolor..</p>
       </div>
-      
+        <div class="col-sm-4">
+          <div class="container" id="tile-box">
+          <script>getTiles(3);</script>
+        </div>
+        </div>
+      <div class="col-sm-4 your-moves">
+        <h3>Column 3</h3>
+        <p>Lorem ipsum dolor..</p>
+      </div>
+  </div>
+
+  <div class="container-xl difficulty-level">
+    <button type="button" class="btn btn-primary" id="easy" onClick="selectDifficultyLevel(3)">Easy</button>
+    <button type="button" class="btn btn-primary" id="medium" onClick="selectDifficultyLevel(4)">Medium</button>
+    <button type="button" class="btn btn-primary" id="difficult" onClick="selectDifficultyLevel(10)">Difficult</button>
+    <button type="button" class="btn btn-primary" id="custom" onClick="selectDifficultyLevel(3)">Custom</button>
+  </div>
+
 
 </body>
+
 </html>
