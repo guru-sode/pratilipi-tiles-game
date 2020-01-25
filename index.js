@@ -71,18 +71,17 @@ function moveTile(e){
         document.getElementById(`${selectedIdX-1},${selectedIdY}`).html(selectedNumber);
         document.getElementById(e.target.id).html('');
     } 
-    else if(document.getElementById(`${selectedIdX},${selectedIdY+1}`) && document.getElementById(`${selectedIdX},${selectedIdY+1}`).getAttribute('value') == ''){
-        document.getElementById(`${selectedIdX},${selectedIdY+1}`).html(selectedNumber);
-        document.getElementById(e.target.id).html('');
+    else if(document.getElementById(`${selectedIdX},${parseInt(selectedIdY)+1}`) && document.getElementById(`${selectedIdX},${parseInt(selectedIdY)+1}`).getAttribute('value') == ''){
+        document.getElementById(`${selectedIdX},${parseInt(selectedIdY)+1}`).innerHTML = (selectedNumber);
+        document.getElementById(e.target.id).innerHTML = ('');
     }
-    else if(document.getElementById(`${selectedIdX},${selectedIdY-1}`) && document.getElementById(`${selectedIdX},${selectedIdY-1}`).getAttribute('value') == ''){
+    else if(document.getElementById(`${selectedIdX},${selectedIdY-1}`) && document.getElementById(`${selectedIdX},${parseInt(selectedIdY)-1}`).getAttribute('value') == ''){
         document.getElementById(`${selectedIdX},${selectedIdY-1}`).html(selectedNumber);
         document.getElementById(e.target.id).html('');
     }
-    else if(document.getElementById(`${selectedIdX+1},${selectedIdY}`) && document.getElementById(`${selectedIdX+1},${selectedIdY}`).getAttribute('value') == ''){
-        console.log('works')
-        document.getElementById(`${selectedIdX+1},${selectedIdY}`).html(selectedNumber);
-        document.getElementById(e.target.id).html('');
+    else if(document.getElementById(`${parseInt(selectedIdX)+1},${selectedIdY}`) && document.getElementById(`${parseInt(selectedIdX)+1},${selectedIdY}`).getAttribute('value') == ''){
+        document.getElementById(`${parseInt(selectedIdX)+1},${selectedIdY}`).innerHTML = selectedNumber;
+        document.getElementById(e.target.id).innerHTML = '';
     }
 }
 
@@ -91,7 +90,7 @@ function getThreeTiles(customTiles){
     for(var i=0; i < customTiles; i++){
         for(var j=0; j< customTiles; j++){
             var number = getRandomNumber();
-            template = template + `<div class="col-sm border border-secondary p-2 bg-light" id=${i + ','+ j} value=${number} onclick=moveTile(event);>
+            template = template + `<div class="col-sm border border-secondary p-2 bg-light" id=${i + ','+ j} onclick=moveTile(event) value=${number}>
             <div class="container" id=${i + ','+ j} value=${number}>
                 <h1 class="display-4" id=${i + ','+ j} value=${number}>${number}</h1>
               </div>
