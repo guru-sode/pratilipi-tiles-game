@@ -9,32 +9,16 @@ var render = function (template, node) {
 	node.innerHTML = template;
 };
 
-function getTiles(customTiles){
-    if(window.numberOfTiles){
-        customTiles = window.numberOfTiles;
-    }
-    switch(customTiles){
-        case 3:
-            getThreeTiles(customTiles);
-            break;
-        case 4:
-            getFourTiles(customTiles);
-            break;
-        case 10:
-            getTenTiles(customTiles);
-            break;
-        default:
-            getThreeTiles(customTiles);
-            break;
-    }
-}
-
 function selectDifficultyLevel(numberOfTiles){
     window.numberOfTiles = numberOfTiles;
-    console.log(numberOfTiles)
+    window.numberArray = [];
+    window.index = -1;
+    pushRandomNumber()
+    getTiles(window.numberOfTiles)
+    console.log(window.numberOfTiles)
 }
 
-(function pushRandomNumber(){
+function pushRandomNumber(){
     var customTiles = 3;
     if(window.numberOfTiles){
         customTiles = window.numberOfTiles;
@@ -49,7 +33,7 @@ function selectDifficultyLevel(numberOfTiles){
             window.numberArray.push(randomNumber);
         }
     }
-}) ();
+}
 
 function getRandomNumber(){
     window.index++;
@@ -59,6 +43,32 @@ function getRandomNumber(){
     else{
         return '';
     }
+}
+
+function isWinner(){
+    var customTiles = 3;
+    if(window.numberOfTiles){
+        customTiles = window.numberOfTiles;
+    }
+    var num = 1;
+    window.winnerArray =  new Array(customTiles).fill(0).map(() => new Array(customTiles).fill(0));
+    for(var i=0; i<customTiles; i++){
+        for(var j=0; j<customTiles; j++){
+            window.winnerArray[i][j] = num;
+            num++;
+        }
+    }
+    var length = 0;
+    for(var i=0; i<customTiles; i++){
+        for(var j=0; j<customTiles; j++){
+            if(i != customTiles && j != customTiles)
+            while(document.getElementById(`${i},${j}`).getAttribute('value') == window.winnerArray[i][j]){
+                length++;
+            }
+        }
+    }
+    if(length == window.winnerArray.length)
+    console.log('winner')
 }
 
 function moveTile(e){
@@ -91,9 +101,10 @@ function moveTile(e){
         document.getElementById(e.target.id).setAttribute('value', '');
         document.getElementById(e.target.id).innerHTML = '';
     }
+    isWinner();
 }
 
-function getThreeTiles(customTiles){
+function getTiles(customTiles){
     var template = ''
     for(var i=0; i < customTiles; i++){
         for(var j=0; j< customTiles; j++){
