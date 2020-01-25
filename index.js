@@ -4,10 +4,16 @@ $(document).ready(function () {
 
 window.numberArray = [];
 window.index = -1;
+window.moves = 0;
+window.isWinner = false;
 
 var render = function (template, node) {
 	node.innerHTML = template;
 };
+
+function getMoves(){
+    document.querySelector('#moves').innerHTML = window.moves;
+}
 
 function selectDifficultyLevel(numberOfTiles){
     window.numberOfTiles = numberOfTiles;
@@ -62,13 +68,24 @@ function isWinner(){
     for(var i=0; i<customTiles; i++){
         for(var j=0; j<customTiles; j++){
             if(i != customTiles && j != customTiles)
-            while(document.getElementById(`${i},${j}`).getAttribute('value') == window.winnerArray[i][j]){
+            if(document.getElementById(`${i},${j}`).getAttribute('value') == window.winnerArray[i][j]){
                 length++;
+            }
+            else{
+                length = 0;
             }
         }
     }
     if(length == window.winnerArray.length)
-    console.log('winner')
+    window.isWinner = true;
+    else
+    window.isWinner = false;
+
+    if(window.isWinner){
+        var template = `<h3>You won!!!!</h3>
+        <p>Refresh browser to play again</p>`
+        render(template, document.querySelector('.winner'));    
+    }
 }
 
 function moveTile(e){
@@ -101,6 +118,8 @@ function moveTile(e){
         document.getElementById(e.target.id).setAttribute('value', '');
         document.getElementById(e.target.id).innerHTML = '';
     }
+    window.moves++;
+    getMoves();
     isWinner();
 }
 
