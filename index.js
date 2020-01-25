@@ -1,3 +1,7 @@
+$(document).ready(function () {
+    window.document = document;
+});
+
 window.numberArray = [];
 window.index = -1;
 
@@ -59,14 +63,26 @@ function getRandomNumber(){
 
 function moveTile(e){
     var selectedNumber = e.target.innerText;
-    var selectedId = e.target.id.split(',')
+    var selectedId = e.target.id.split(',');
     var selectedIdX = selectedId[0];
     var selectedIdY = selectedId[1];
-    if($.document.getElementById(`${selectedIdX+1},${selectedIdY}`) || 
-        $.document.getElementById(`${selectedIdX},${selectedIdY+1}`) || 
-        $.document.getElementById(`${selectedIdX+1},${selectedIdY+1}`) || 
-        $.document.getElementById(`${selectedIdX+1},${selectedIdY}`)){
-
+    var document = window.document;
+    if(document.getElementById(`${selectedIdX-1},${selectedIdY}`) && document.getElementById(`${selectedIdX-1},${selectedIdY}`).getAttribute('value') == ''){
+        document.getElementById(`${selectedIdX-1},${selectedIdY}`).html(selectedNumber);
+        document.getElementById(e.target.id).html('');
+    } 
+    else if(document.getElementById(`${selectedIdX},${selectedIdY+1}`) && document.getElementById(`${selectedIdX},${selectedIdY+1}`).getAttribute('value') == ''){
+        document.getElementById(`${selectedIdX},${selectedIdY+1}`).html(selectedNumber);
+        document.getElementById(e.target.id).html('');
+    }
+    else if(document.getElementById(`${selectedIdX},${selectedIdY-1}`) && document.getElementById(`${selectedIdX},${selectedIdY-1}`).getAttribute('value') == ''){
+        document.getElementById(`${selectedIdX},${selectedIdY-1}`).html(selectedNumber);
+        document.getElementById(e.target.id).html('');
+    }
+    else if(document.getElementById(`${selectedIdX+1},${selectedIdY}`) && document.getElementById(`${selectedIdX+1},${selectedIdY}`).getAttribute('value') == ''){
+        console.log('works')
+        document.getElementById(`${selectedIdX+1},${selectedIdY}`).html(selectedNumber);
+        document.getElementById(e.target.id).html('');
     }
 }
 
